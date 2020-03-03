@@ -5,7 +5,7 @@ from .models import MaskProduct, MaskProductSerializer
 
 
 def index(request):
-    return render(request, 'maskstore/index.html')
+    return render(request, 'store/index.html')
 
 class MaskProductsViewSet(viewsets.ModelViewSet):
     queryset = MaskProduct.objects.all()

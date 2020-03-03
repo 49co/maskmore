@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'maskstore.apps.MaskstoreConfig',
+    'store.apps.StoreConfig',
     'rest_framework',
 ]
 
@@ -129,7 +129,8 @@ USE_TZ = False
 
 STATIC_URL = '/static/'
 STATICFILDES_DIRS = [
-     os.path.join(BASE_DIR, 'maskstore/static'),
+    #  os.path.join(BASE_DIR, 'maskstore/static'),
+     os.path.join(BASE_DIR, 'store/static'),
 ]
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')

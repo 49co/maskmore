@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'maskstore.apps.MaskstoreConfig',
-    'rest_framework'
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -128,11 +128,10 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-
 STATICFILDES_DIRS = [
-    os.path.join(BASE_DIR, 'maskmore/static')
+     os.path.join(BASE_DIR, 'maskstore/static'),
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, '/media')
-
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'

@@ -4,9 +4,9 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'products/masks', views.MaskProductsViewSet)
+router.register(r'masks', views.MaskProductsViewSet)
 
 urlpatterns = [
-    url(r'^', include(router.urls)),
+    url(r'^products/', include(router.urls)),
     path('', views.index, name='index'),
 ]

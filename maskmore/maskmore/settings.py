@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store.apps.StoreConfig',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -56,7 +58,9 @@ ROOT_URLCONF = 'maskmore.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend', 'build'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -131,8 +135,15 @@ STATIC_URL = '/static/'
 STATICFILDES_DIRS = [
     #  os.path.join(BASE_DIR, 'maskstore/static'),
      os.path.join(BASE_DIR, 'store/static'),
+     os.path.join(BASE_DIR, 'frontend', 'build', 'static'),
 ]
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# react setting
+CORS_ORIGIN_WHITELIST = (
+    'https://localhost:3000',
+    'https://localhost:8000',
+)

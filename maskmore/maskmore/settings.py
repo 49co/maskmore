@@ -132,7 +132,7 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILDES_DIRS = [
+STATICFILES_DIRS = [
     #  os.path.join(BASE_DIR, 'maskstore/static'),
      os.path.join(BASE_DIR, 'store/static'),
      os.path.join(BASE_DIR, 'frontend', 'build', 'static'),

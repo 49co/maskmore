@@ -33,7 +33,6 @@ __pycache__/
 # Distribution / packaging
 .Python
 env/
-build/
 develop-eggs/
 dist/
 downloads/
@@ -86,3 +85,5 @@ local_settings.py
 .env
 db.sqlite3
 media/
+
+.vscode

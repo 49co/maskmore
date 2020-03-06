@@ -87,3 +87,4 @@ db.sqlite3
 media/
 
 .vscode
+node_modules

@@ -88,3 +88,4 @@ media/
 
 .vscode
 node_modules
+migrations/

@@ -7,6 +7,6 @@ router = routers.DefaultRouter()
 router.register(r'masks', views.MaskProductsViewSet)
 
 urlpatterns = [
-    url(r'^products/', include(router.urls)),
+    url(r'^store/', include(router.urls)),
     path('', views.index, name='index'),
 ]

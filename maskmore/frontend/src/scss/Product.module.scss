@@ -5,6 +5,7 @@ $blank-width: 16px;
   position: relative;
   display: inline-block;
   width: $product-width;
+  max-width: $product-width;
   height: $product-width;
   margin: 15px;
   overflow: hidden;
@@ -79,4 +80,13 @@ $blank-width: 16px;
     color: #7e7e7e;
     font-size: 13px;
   }
+}
+
+
+@media screen and (max-width: 768px) {
+  .li {
+    display: block;
+    width: 100%;
+    margin: 15px auto;
+  }   
 }

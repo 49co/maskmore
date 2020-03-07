@@ -31,3 +31,25 @@
   }
   margin-left: 50px;
 }
+
+
+@media screen and (max-width: 768px) {
+  .header {
+    height: 50px;
+    line-height: 50px;
+  }
+  .content {
+    width: 100%;
+    padding: 0 16px;
+  }
+  .logo {
+    width: 90px;
+    left: 16px;
+  }
+  .gnb {
+    button {
+      font-size: 15px;
+    }
+    margin-left: 13px;
+  }
+}

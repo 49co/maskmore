@@ -1,28 +1,26 @@
-import React from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-} from 'react-router-dom';
-import ScrollToTop from './components/ScrollToTop';
+import React, { useState } from 'react';
 import Header from './components/Header';
-import Main from './components/Main';
+import MainContainer from './containers/MainContainer';
 import Footer from './components/Footer';
-import Suggestion from './components/Suggestion';
 
 const App = () => {
+  const [currentView, setCurrentView] = useState(`products`);
+
+  const handleView = currentView => {
+    setCurrentView(currentView);
+    window.scrollTo(0, 0);
+  }
+
   return (
-    <Router>
-      <ScrollToTop />
-      <Header />
-      <Switch>
-        <Route path='/' exact component={Main} />
-        <Route path='/suggestion' exact component={Suggestion} />
-        <Redirect from='*' to='/' />
-      </Switch>
+    <>
+      <Header 
+        handleView={handleView}
+      />
+      <MainContainer
+        currentView={currentView}
+      />
       <Footer />
-    </Router>
+    </>
   );
 }
 

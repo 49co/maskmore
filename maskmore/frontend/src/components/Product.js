@@ -3,8 +3,11 @@ import styles from '../scss/Product.module.scss';
 import siren from '../img/siren.png';
 
 const Product = props => {
-  const { mask } = props;
+  const { mask, kind } = props;
 
+  if (kind !== `ALL` & kind !== mask.category) {
+    return null;
+  }
   return (
     <li className={styles.li}>
       <a className={styles.link} href={mask.origin_url} target="_blank" rel="noopener noreferrer">

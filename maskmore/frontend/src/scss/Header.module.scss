@@ -13,6 +13,13 @@
   width: 1080px;
   margin: 0 auto;
   text-align: right;
+  button {
+    margin-left: 50px;
+    font-size: 20px;
+    color: #ffffff;
+    vertical-align: middle;
+    user-select: none;
+  }
 }
 .logo {
   position: absolute;
@@ -21,16 +28,10 @@
   transform: translateY(-50%);
   width: 165px;
   vertical-align: middle;
+  user-select: none;
+  cursor: pointer;
 }
-.gnb {
-  button {
-    font-size: 20px;
-    color: #ffffff;
-    vertical-align: middle;
-    user-select: none;
-  }
-  margin-left: 50px;
-}
+  
 
 
 @media screen and (max-width: 768px) {
@@ -41,15 +42,13 @@
   .content {
     width: 100%;
     padding: 0 16px;
+    button {
+      font-size: 15px;
+      margin-left: 13px;
+    }
   }
   .logo {
     width: 90px;
     left: 16px;
-  }
-  .gnb {
-    button {
-      font-size: 15px;
-    }
-    margin-left: 13px;
   }
 }

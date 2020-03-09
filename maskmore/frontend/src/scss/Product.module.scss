@@ -9,6 +9,7 @@ $blank-width: 16px;
   height: $product-width;
   margin: 15px;
   overflow: hidden;
+  user-select: none;
 }
 .link:hover {
   .imgLayer {
@@ -18,7 +19,7 @@ $blank-width: 16px;
 }
 .img {
   width: 100%;
-  height: calc(100% - 100px);
+  height: auto;
 }
 .imgLayer {
   position: absolute;

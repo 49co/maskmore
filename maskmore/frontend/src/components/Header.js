@@ -1,21 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import styles from '../scss/Header.module.scss';
 import logo from '../img/logo.png';
 
-const Header = () => {
+const Header = props => {
+  const { handleView } = props;
+
   return (
     <header className={styles.header}>
       <div className={styles.content}>
-        <Link to="/">
-          <img className={styles.logo} src={logo} alt="로고"/>
-        </Link>
-        <Link to="/" className={styles.gnb}>
-          <button type="button">상품보기</button>
-        </Link>
-        <Link to="/suggestion" className={styles.gnb}>
-          <button type="button">제보하기</button>
-        </Link>
+        <img className={styles.logo} onClick={() => handleView(`products`)} src={logo} alt="로고"/>
+        <button type="button" onClick={() => handleView(`products`)}>상품보기</button>
+        <button type="button" onClick={() => handleView(`suggestion`)}>제보하기</button>
       </div>
     </header>
   );

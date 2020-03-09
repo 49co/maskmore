@@ -7,7 +7,7 @@ const Footer = () => {
       <div className={styles.by}>by Imtak, Kenny, and Nani</div>
       <div className={styles.contact}>
         <strong>contact </strong>
-        <span>wjdgmlxkr@gmail.com</span>
+        <span>95imtae@gmail.com</span>
       </div>
     </footer>
   );

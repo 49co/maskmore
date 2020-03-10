@@ -11,21 +11,18 @@ const Report = props => {
 
   const handleForm = evt => {
     evt.preventDefault();
-    // axios.post(`/store/masks/`, {
-    //   title: reportProduct,
-    //   description,
-    //   email,
-    // })
-    //   .then(res => {
-    //     console.log(res.data);
-    //     alert(`신고 완료되었습니다. 소중한 신고 감사합니다 :\)`);
-    //     setEmail(``);
-    //     setDescription(``);
-    //     // TODO: focus가 아니라 Report 컴포넌트 끄기
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    axios.post(`/store/masks/`, {
+      title: reportProduct,
+      description,
+      email,
+    })
+      .then(res => {
+        alert(`신고 완료되었습니다. 소중한 신고 감사합니다 :\)`);
+        setViewReport(false);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   useEffect(() => {

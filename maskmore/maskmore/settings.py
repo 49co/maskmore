@@ -18,15 +18,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@7!xvci5)nq1x6sb^ys+loh%1e@c(czm%ilvga97bn5$37_l&9'
+SECRET_KEY = os.environ.get("SECRET_KEY", default="password")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+IS_DOCKER = int(os.environ.get("IS_DOCKER", default=0))
+DEBUG = int(os.environ.get("DEBUG", default=1))
 
-ALLOWED_HOSTS = []
-
+if IS_DOCKER:
+    if DEBUG:
+        ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+    else:
+        ALLOWED_HOSTS = ["*"]
+else:
+    ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -80,11 +84,16 @@ WSGI_APPLICATION = 'maskmore.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    "default": {
+        "ENGINE": os.environ.get("SQL_ENGINE", "django.db.backends.sqlite3"),
+        "NAME": os.environ.get("SQL_DATABASE", os.path.join(BASE_DIR, "db.sqlite3")),
+        "USER": os.environ.get("SQL_USER", "user"),
+        "PASSWORD": os.environ.get("SQL_PASSWORD", "password"),
+        "HOST": os.environ.get("SQL_HOST", "localhost"),
+        "PORT": os.environ.get("SQL_PORT", "5432"),
     }
 }
+
 
 #  Rest API
 REST_FRAMEWORK = {
@@ -132,13 +141,14 @@ USE_TZ = False
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATICFILES_DIRS = [
     #  os.path.join(BASE_DIR, 'maskstore/static'),
      os.path.join(BASE_DIR, 'store/static'),
      os.path.join(BASE_DIR, 'frontend', 'build', 'static'),
 ]
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 

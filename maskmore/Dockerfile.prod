@@ -1,0 +1,77 @@
+###########
+# BUILDER #
+###########
+
+# pull official base image
+FROM python:3.7.3 as builder
+
+# app name
+ENV MY_APP_NAME=maskmore
+# set work directory
+WORKDIR /usr/src/$MY_APP_NAME
+
+# set environment variables
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
+# install psycopg2 dependencies
+RUN apt-get update \
+    && apt-get install -y postgresql gcc python3-dev musl-dev
+
+# lint
+RUN python -m pip install --upgrade pip
+# RUN pip install flake8
+COPY . /usr/src/$MY_APP_NAME/
+# RUN flake8 --ignore=E501,F401 .
+
+# install dependencies
+COPY ./requirements.txt .
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /usr/src/$MY_APP_NAME/wheels -r requirements.txt
+
+
+#########
+# FINAL #
+#########
+
+# pull official base image
+FROM python:3.7.3
+
+# app name
+ENV MY_APP_NAME=maskmore
+
+# create directory for the app user
+RUN mkdir -p /home/$MY_APP_NAME
+
+# create the app user
+# RUN groupadd app && adduser -S app -G app
+
+# create the appropriate directories
+ENV HOME=/home/$MY_APP_NAME
+ENV APP_HOME=/home/$MY_APP_NAME/web
+RUN mkdir $APP_HOME
+RUN mkdir $APP_HOME/static
+RUN mkdir $APP_HOME/media
+WORKDIR $APP_HOME
+
+# install dependencies
+RUN apt-get update && apt-get install -y libpq-dev \
+    && apt install -y netcat
+COPY --from=builder /usr/src/$MY_APP_NAME/wheels /wheels
+COPY --from=builder /usr/src/$MY_APP_NAME/requirements.txt .
+RUN python -m pip install --upgrade pip
+RUN pip install --no-cache /wheels/*
+
+# copy entrypoint-prod.sh
+COPY ./entrypoint.prod.sh $APP_HOME
+
+# copy project
+COPY . $APP_HOME
+
+# chown all the files to the app user
+# RUN chown -R app:app $APP_HOME
+
+# change to the app user
+# USER app
+
+# run entrypoint.prod.sh
+ENTRYPOINT ["/home/maskmore/web/entrypoint.prod.sh"]

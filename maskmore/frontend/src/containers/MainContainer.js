@@ -4,11 +4,14 @@ import cx from 'classnames';
 import styles from '../scss/MainContainer.module.scss';
 import Product from '../components/Product';
 import Suggestion from '../components/Suggestion';
+import Report from '../components/Report';
 
 const MainContainer = props => {
   const { currentView } = props;
   const [kind, setKind] = useState(`ALL`);
   const [masks, setMasks] = useState([]);
+  const [viewReport, setViewReport] = useState(false);
+  const [reportProduct, setReportProduct] = useState(``);
   
   const getProducts = () => {
     axios.get(`/store/masks/`)
@@ -18,6 +21,11 @@ const MainContainer = props => {
     .catch(err => {
       console.log(err);
     });
+  }
+
+  const handleViewReport = title => {
+    setViewReport(true);
+    setReportProduct(title)
   }
 
   useEffect(() => {
@@ -42,6 +50,7 @@ const MainContainer = props => {
                 key={index}
                 mask={mask}
                 kind={kind}
+                handleViewReport={handleViewReport}
               />
             ))}
             </ul>
@@ -49,6 +58,12 @@ const MainContainer = props => {
         </>
       )}
       {currentView === `suggestion` && <Suggestion />}
+      {viewReport && (
+        <>
+          <div className={styles.layer} onClick={() => setViewReport(false)}></div>
+          <Report reportProduct={reportProduct} setViewReport={setViewReport} />
+        </>
+      )}
     </section>
   );
 }

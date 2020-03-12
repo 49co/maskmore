@@ -12,7 +12,10 @@ const Product = props => {
     <li className={styles.li}>
       <a className={styles.link} href={mask.origin_url} target="_blank" rel="noopener noreferrer">
         <img className={styles.img} src={mask.image} alt="마스크 이미지"/>
-        <div className={styles.imgLayer}></div>
+        <div className={styles.updateTime}>
+          <div className={styles.timeLayer}></div>
+          <div className={styles.time}>{mask.update_time}</div>
+        </div>
         <div className={styles.content}>
           <div className={styles.title}>
             <span className={styles.name}>[{mask.title}] </span>
@@ -24,7 +27,7 @@ const Product = props => {
           </div>
         </div>
       </a>
-      <div className={styles.reportContent} onClick={title => handleViewReport(`[${mask.title}] ${mask.description}`)}>
+      <div className={styles.reportContent} onClick={() => handleViewReport(`[${mask.title}] ${mask.description}`)}>
         <img src={siren} alt="신고 이미지"/>
         <span>신고</span>
       </div>

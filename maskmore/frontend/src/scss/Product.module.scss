@@ -12,23 +12,40 @@ $blank-width: 16px;
   user-select: none;
 }
 .link:hover {
-  .imgLayer {
-    // opacity: 0.1;
-    // transition: opacity 0.3s;
-  }
+  
 }
 .img {
   width: 100%;
   height: auto;
 }
-.imgLayer {
+.updateTime {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 20%;
-  background-color: black;
-  opacity: 0;
+  height: 56px;
+  .timeLayer {
+    width: 100%;
+    height: 100%;
+    height: 50px;
+    background-color: grey;
+    filter: blur(7px);
+    opacity: .3;
+  }
+  .time {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    color: white;
+    font-size: 24px;
+    font-weight: 900;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
+  }
 }
 .content {
   position: absolute;

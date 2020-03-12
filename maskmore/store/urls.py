@@ -4,7 +4,9 @@ from rest_framework import routers
 from . import views
 
 router = routers.DefaultRouter()
-router.register(r'masks', views.MaskProductsViewSet)
+router.register(r'masks/(?P<mask_id>[^/.]+)/reports', views.ReportViewSet)
+router.register(r'masks', views.MaskProductViewSet)
+router.register(r'suggestions', views.SuggestionViewSet)
 
 urlpatterns = [
     url(r'^store/', include(router.urls)),

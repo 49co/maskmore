@@ -1,5 +1,6 @@
 from django.db import models
 from rest_framework import serializers
+from rest_framework.reverse import reverse
 
 class MaskProduct(models.Model):
     VISIBLE = (
@@ -17,7 +18,7 @@ class MaskProduct(models.Model):
         ('on sale', 'on sale'),
         ('sold out', 'sold out'),
     )
-    # mask_id        = models.AutoField(primary_key=True)
+
     title          = models.CharField(max_length= 100)
     description    = models.TextField(blank=True)
     origin_url     = models.URLField(blank=True, max_length=400)
@@ -34,7 +35,44 @@ class MaskProduct(models.Model):
     def __str__(self):
         return self.title
 
+
+class Report(models.Model):
+    maskProduct    = models.ForeignKey(MaskProduct, on_delete=models.CASCADE)
+    description    = models.TextField(blank=True)
+    email          = models.EmailField(max_length=254, blank= True)
+
+    def __str__(self):
+        return self.maskProduct.title
+
+
+class Suggestion(models.Model):
+    origin_url     = models.URLField(blank=True, max_length=400)
+    title          = models.CharField(max_length= 100)
+    package_price  = models.IntegerField(default=0)
+    email          = models.EmailField(max_length=254, blank= True)
+
+    def __str__(self):
+        return self.title
+
+
+# Serializer
 class MaskProductSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = MaskProduct
-        fields = ['title', 'description', 'origin_url', 'image', 'package_price', 'price', 'category', 'email', 'update_time', 'sale', 'is_visible']
+        fields = ['pk','title', 'description', 'origin_url', 'image', 'package_price', 'price', 'category', 'email', 'update_time', 'sale', 'is_visible']
+
+
+class ReportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Report
+        fields=['maskProduct', 'masks_title', 'description', 'email']
+
+    masks_title = serializers.SerializerMethodField('get_masks_title')
+
+    def get_masks_title(self, obj):
+        return obj.maskProduct.title
+
+class SuggestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Suggestion
+        fields=['origin_url', 'title', 'package_price', 'email']

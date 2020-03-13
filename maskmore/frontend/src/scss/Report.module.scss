@@ -23,7 +23,7 @@
   color: #43465d;
   margin-bottom: 16px;
   font-size: 24px;
-  font-weight: bold;
+  font-family: 'S-CoreDream-6Bold', sans-serif;
 }
 .description {
   line-height: 1.5;
@@ -69,10 +69,8 @@
     background-color: #e13d3d;
     color: white;
     font-size: 15px;
+    font-family: 'S-CoreDream-6Bold', sans-serif;
     letter-spacing: 3px;
-    &:hover {
-
-    }
   }
 }
 

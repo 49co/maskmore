@@ -5,7 +5,7 @@ from .models import MaskProduct, MaskProductSerializer, Suggestion, SuggestionSe
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.shortcuts import redirect
 from rest_framework.response import Response
-
+from rest_framework.permissions import AllowAny
 
 class MaskProductViewSet(viewsets.ModelViewSet):
     queryset = MaskProduct.objects.all()
@@ -13,6 +13,7 @@ class MaskProductViewSet(viewsets.ModelViewSet):
 
 
 class ReportViewSet(viewsets.ModelViewSet):
+    permission_classes = (AllowAny,)
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
     
@@ -24,6 +25,7 @@ class ReportViewSet(viewsets.ModelViewSet):
 
 
 class SuggestionViewSet(viewsets.ModelViewSet):
+    permission_classes = (AllowAny,)
     queryset = Suggestion.objects.all()
     serializer_class = SuggestionSerializer
 

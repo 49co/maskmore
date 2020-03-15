@@ -11,8 +11,9 @@ const Report = props => {
 
   const handleForm = evt => {
     evt.preventDefault();
-    axios.post(`/store/masks/`, {
-      title: reportProduct,
+    axios.post(`/store/masks/${reportProduct.pk}/reports/`, {
+      maskProduct: reportProduct.pk,
+      title: reportProduct.title,
       description,
       email,
     })
@@ -38,7 +39,7 @@ const Report = props => {
       </div>
       <form className={styles.form} onSubmit={evt => handleForm(evt)}>
         <label>신고할 상품</label>
-        <div className={styles.reportProduct}>{reportProduct}</div>
+        <div className={styles.reportProduct}>{reportProduct.title}</div>
         <label htmlFor="description">신고 내용</label>
         <input 
           id="description" 
@@ -58,7 +59,6 @@ const Report = props => {
           placeholder="example@exam.com" 
           autoComplete="off" 
           spellCheck="false" 
-          required 
           onChange={evt => setEmail(evt.target.value)}
           value={email}
         />

@@ -11,7 +11,7 @@ const Suggestion = () => {
 
   const handleForm = evt => {
     evt.preventDefault();
-    axios.post(`/store/masks/`, {
+    axios.post(`/store/suggestions/`, {
       title: name,
       origin_url: url,
       package_price: price,
@@ -83,7 +83,6 @@ const Suggestion = () => {
           placeholder="example@exam.com" 
           autoComplete="off" 
           spellCheck="false" 
-          required 
           onChange={evt => setEmail(evt.target.value)}
           value={email}
         />

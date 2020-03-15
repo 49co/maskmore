@@ -27,7 +27,7 @@ const Product = props => {
           </div>
         </div>
       </a>
-      <div className={styles.reportContent} onClick={() => handleViewReport(`[${mask.title}] ${mask.description}`)}>
+      <div className={styles.reportContent} onClick={() => handleViewReport(mask.pk, `[${mask.title}] ${mask.description}`)}>
         <img src={siren} alt="신고 이미지"/>
         <span>신고</span>
       </div>

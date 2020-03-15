@@ -11,7 +11,7 @@ const MainContainer = props => {
   const [kind, setKind] = useState(`ALL`);
   const [masks, setMasks] = useState([]);
   const [viewReport, setViewReport] = useState(false);
-  const [reportProduct, setReportProduct] = useState(``);
+  const [reportProduct, setReportProduct] = useState({});
   
   const getProducts = () => {
     axios.get(`/store/masks/`)
@@ -23,9 +23,12 @@ const MainContainer = props => {
     });
   }
 
-  const handleViewReport = title => {
+  const handleViewReport = (pk, title) => {
     setViewReport(true);
-    setReportProduct(title)
+    setReportProduct({
+      pk,
+      title,
+    });
   }
 
   useEffect(() => {

@@ -1,7 +1,7 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 from rest_framework import viewsets
-from .models import MaskProduct, MaskProductSerializer, Suggestion, SuggestionSerializer, Report, ReportSerializer
+from .models import MaskProduct, Suggestion, Report
+from .serializers import MaskProductSerializer, SuggestionSerializer, ReportSerializer
 from django.views.decorators.csrf import ensure_csrf_cookie
 from django.shortcuts import redirect
 from rest_framework.response import Response
@@ -16,7 +16,7 @@ class ReportViewSet(viewsets.ModelViewSet):
     permission_classes = (AllowAny,)
     queryset = Report.objects.all()
     serializer_class = ReportSerializer
-    
+
     def create(self, request, mask_id):
         serializer = ReportSerializer(data=request.data)
         serializer.is_valid()

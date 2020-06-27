@@ -1,0 +1,114 @@
+$product-width: 330px;
+$blank-width: 16px;
+
+.li {
+  position: relative;
+  display: inline-block;
+  width: $product-width;
+  max-width: $product-width;
+  height: $product-width;
+  margin: 15px;
+  overflow: hidden;
+  user-select: none;
+}
+.link:hover {
+  
+}
+.img {
+  width: 100%;
+  height: auto;
+}
+.updateTime {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .timeLayer {
+    width: 100%;
+    height: 100%;
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0.5+1,0+100 */
+    background: -moz-linear-gradient(top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.5) 1%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.5) 1%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%,rgba(0,0,0,0.5) 1%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#80000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+    opacity: .3;
+  }
+  .time {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 56px;
+    padding: 16px;
+    color: white;
+    font-size: 27px;
+    font-family: 'S-CoreDream-8Heavy', sans-serif;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space:nowrap;
+    text-align: center;
+    letter-spacing: -1px;
+  }
+}
+.content {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100px;
+  padding: 14px;
+  background-color: #ffffff;
+}
+.title {
+  height: 48px;
+  line-height: 1.5;
+  font-size: 16px;
+  color: #252525;
+}
+.priceContent {
+  display: inline-block;
+  margin-top: 5px;
+  .totalPrice {
+    line-height: 1.3;
+    color: #ec3f3f;
+    font-size: 20px;
+    font-weight: 900;
+  }
+  .price {
+    color: #727272;
+    font-size: 12px;
+  }
+}
+.reportContent {
+  position: absolute;
+  right: 14px;
+  bottom: 12px;
+  width: 50px;
+  text-align: right;
+  cursor: pointer;
+  &:hover {
+    img {
+      transform: rotate(30deg);
+    }
+  }
+  img {
+    width: 13px;
+    height: 13px;
+    margin-right: 4px;
+    vertical-align: sub;
+  }
+  span {
+    color: #7e7e7e;
+    font-size: 13px;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .li {
+    display: block;
+    width: 100%;
+    margin: 15px auto;
+  }   
+}

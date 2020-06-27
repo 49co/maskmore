@@ -1,0 +1,26 @@
+.footer {
+  width: 1050px;
+  height: 125px;
+  margin: 40px auto 0 auto;
+  padding: 32px 0 64px 16px;
+  border-top: 1px solid #cccccc;
+  color: #919191;
+  font-size: 12px;
+  strong {
+    font-weight: 900;
+  }
+}
+.by {
+  font-weight: 900;
+}
+.contact {
+  margin-top: 10px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .footer {
+    width: 100%;
+    padding-left: 35px;
+  }
+}

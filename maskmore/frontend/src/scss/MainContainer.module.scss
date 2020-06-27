@@ -1,0 +1,62 @@
+.section {
+  position: relative;
+  min-height: 660px;
+  width: 1080px;
+  margin: 0 auto;
+}
+.kindNav {
+  width: 100%;
+  height: 90px;
+  line-height: 90px;
+  background-color: #f3f3f3;
+  ul {
+    width: 1080px;
+    text-align: center;
+  }
+  li {
+    display: inline-block;
+    margin: 0 20px;
+    width: 50px;
+    font-size: 17px;
+    font-family: 'S-CoreDream-4Regular', sans-serif;
+    color: #2c2c2c;
+    user-select: none;
+    cursor: pointer;
+  }
+}
+.selectedKind{
+  font-family: 'S-CoreDream-6Bold', sans-serif !important;
+}
+.products {
+  margin-top: -15px;
+  font-size: 0;
+}
+.layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0.6;
+  z-index: 1;
+}
+
+
+@media screen and (max-width: 768px) {
+  .section {
+    width: 100%;
+    min-height: 450px;
+  }
+  .kindNav {
+    height: 70px;
+    line-height: 70px;
+    ul {
+      width: 100%;
+    }
+    li {
+      margin: 0 5px;
+      font-size: 15px;
+    }
+  }
+}
